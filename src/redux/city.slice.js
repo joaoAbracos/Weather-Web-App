@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import uuid from 'react-uuid';
 const { getName } = require('country-list');
-
+const API_KEY = ''
 
 export const addAsync = createAsyncThunk(
     'city/addAsync', async (payload) => {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${payload.city}&appid=db0727b295912aa48259ff52927a00a6`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${payload.city}&appid=${API_KEY}`);
         if (response.ok) {
             const data = await response.json();
             const cityname = data.name;
             const coord = data.coord;
             const country = data.sys.country;
             const countryFull = getName(country);
-            const response_forecast = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=hourly&appid=db0727b295912aa48259ff52927a00a6`);
+            const response_forecast = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=hourly&appid=${API_KEY}`);
             const forecast = await response_forecast.json();
             if (response.ok) {
                 return { data, cityname, forecast, countryFull };
