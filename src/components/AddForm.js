@@ -35,7 +35,7 @@ const AddForm = () => {
 				onChange={(event) => setValue(event.target.value)}
 			/>
 			<button type='submit' className='btn btn-primary mb-2'>
-				Add
+				Add City 2
 			</button>
 		</form>
 	);
