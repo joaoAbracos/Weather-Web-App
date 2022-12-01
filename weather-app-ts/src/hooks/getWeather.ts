@@ -19,7 +19,7 @@ export const useWeather = (lat: Number, long: Number): TApiResponseW => {
                 lat = DEFAULT_LAT;
                 long = DEFAULT_LONG;
             }
-            const apiResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&exclude={part}&appid=${URL}`);
+            const apiResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&exclude={part}&appid=${URL}`);
             const json = await apiResponse.json();
             setStatus(apiResponse.status);
             setData(json);
